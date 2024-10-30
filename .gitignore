@@ -1,0 +1,38 @@
+# Gradle files
+.gradle/
+build/
+
+# Cache files
+**/*~
+**/#**#
+**/.#**
+**/.DS_Store
+
+# IntelliJ IDEA files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Fleet files
+.fleet/
+
+# Kotlin specific files
+.kotlin/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.db
+**/*.sqlite
+**/*.zip
+**/*.klib
+
+# Local environment properties
+local.properties
+
+# OS specific files
+.DS_Store
+
+# Gradle Wrapper
+!gradle/wrapper/gradle-wrapper.jar
