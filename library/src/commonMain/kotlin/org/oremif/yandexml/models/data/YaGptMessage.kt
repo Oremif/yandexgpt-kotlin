@@ -1,4 +1,4 @@
-package io.github.oremif.yandexgpt
+package org.oremif.yandexml.models.data
 
 import kotlinx.serialization.Serializable
 
@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
  * A message class representing a wrapper over the inputs and outputs of the completion model.
  *
  * @property role The ID of the message sender. Supported roles:
- * - `system`: Special role used to define the behaviour of the completion model.
+ * - `system`: Special role used to define the behavior of the completion model.
  * - `assistant`: A role used by the model to generate responses.
  * - `user`: A role used by the user to describe requests to the model.
  * @property text Textual content of the message.

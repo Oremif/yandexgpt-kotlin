@@ -1,4 +1,4 @@
-package io.github.oremif.yandexgpt
+package org.oremif.yandexml.models.data
 
 import kotlinx.serialization.Serializable
 

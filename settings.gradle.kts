@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "yandexgpt-kotlin"
+rootProject.name = "yandexml-kotlin-sdk"
 include(":library")

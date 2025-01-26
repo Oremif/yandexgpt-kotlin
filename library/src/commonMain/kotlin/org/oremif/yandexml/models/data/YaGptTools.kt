@@ -1,4 +1,4 @@
-package io.github.oremif.yandexgpt
+package org.oremif.yandexml.models.data
 
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmInline
@@ -10,7 +10,7 @@ import kotlin.jvm.JvmInline
  */
 @Serializable
 @JvmInline
-public value class ToolCallList(val toolCalls: List<YaGptToolCall>)
+public value class ToolCallList(public val toolCalls: List<YaGptToolCall>)
 
 /**
  * Represents a call to a tool.
@@ -20,7 +20,7 @@ public value class ToolCallList(val toolCalls: List<YaGptToolCall>)
  */
 @Serializable
 @JvmInline
-public value class YaGptToolCall(val functionCall: YaFunctionCall)
+public value class YaGptToolCall(public val functionCall: YaFunctionCall)
 
 /**
  * Represents the invocation of a function with specific arguments.
@@ -41,7 +41,7 @@ public data class YaFunctionCall(
  */
 @Serializable
 @JvmInline
-public value class ToolResultList(val toolResults: List<YaGptToolResult>)
+public value class ToolResultList(public val toolResults: List<YaGptToolResult>)
 
 /**
  * Represents the result of a tool call.
@@ -51,7 +51,7 @@ public value class ToolResultList(val toolResults: List<YaGptToolResult>)
  */
 @Serializable
 @JvmInline
-public value class YaGptToolResult(val functionResult: YaFunctionResult)
+public value class YaGptToolResult(public val functionResult: YaFunctionResult)
 
 /**
  * Represents the result of a function call.
@@ -76,7 +76,7 @@ public data class YaFunctionResult(
  */
 @Serializable
 @JvmInline
-public value class YaGptTool(val function: YaGptFunctionTool)
+public value class YaGptTool(public val function: YaGptFunctionTool)
 
 /**
  * Represents a function tool that can be invoked during completion generation.

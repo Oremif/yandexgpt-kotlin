@@ -1,4 +1,4 @@
-package io.github.oremif.yandexgpt
+package org.oremif.yandexml.models.data
 
 import kotlinx.serialization.Serializable
 
@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  *
  * @property stream Enables streaming of partially generated text. Default: **false**.
  * @property temperature Affects creativity and randomness of responses. Should be a double number between 0 (inclusive) and 1 (inclusive).
- * Lower values produce more straightforward responses while higher values lead to increased creativity and randomness.
+ * Lower values produce more straightforward responses, while higher values lead to increased creativity and randomness.
  * Default temperature: 0.3
  * @property maxTokens The limit on the number of tokens used for single completion generation.
  * Must be greater than zero. This maximum allowed parameter value may depend on the model being used.

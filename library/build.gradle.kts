@@ -1,4 +1,7 @@
+@file:OptIn(ExperimentalWasmDsl::class)
+
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -13,17 +16,24 @@ group = "io.github.oremif"
 version = "0.0.1"
 
 kotlin {
+    explicitApi()
+
     jvm()
+
     androidTarget {
         publishLibraryVariants("release")
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_1_8)
         }
     }
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+
     linuxX64()
+
+    wasmJs()
 
     sourceSets {
         val commonMain by getting {
@@ -36,6 +46,7 @@ kotlin {
                 implementation(libs.ktor.client.logging)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.client.serialization.json)
+                implementation(libs.kotlinx.datetime)
             }
         }
         val commonTest by getting {
@@ -62,10 +73,10 @@ mavenPublishing {
     coordinates(group.toString(), "library", version.toString())
 
     pom {
-        name = "yandexgpt-kotlin"
-        description = "YandexGPT's Kotlin SDK"
-        inceptionYear = "2024"
-        url = "https://github.com/oremif/yandexgpt-kotlin/"
+        name = "yandexml-kotlin-sdk"
+        description = "Yandex Cloud ML Kotlin SDK"
+        inceptionYear = "2025"
+        url = "https://github.com/oremif/yandexml-kotlin-sdk/"
         licenses {
             license {
                 name = "XXX"
