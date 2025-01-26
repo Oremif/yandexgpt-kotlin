@@ -8,6 +8,7 @@ serialization = "1.8.0"
 coroutines = "1.10.1"
 ktor = "3.0.3"
 datetime = "0.6.1"
+mavenPublish = "0.29.0"
 
 [libraries]
 # Coroutines
@@ -36,4 +37,4 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
-vanniktech-mavenPublish = { id = "com.vanniktech.maven.publish", version = "0.29.0" }
+vanniktech-mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

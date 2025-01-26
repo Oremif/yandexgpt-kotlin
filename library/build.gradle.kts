@@ -1,7 +1,9 @@
 @file:OptIn(ExperimentalWasmDsl::class)
 
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -13,17 +15,19 @@ plugins {
 }
 
 group = "io.github.oremif"
-version = "0.0.1"
+version = "0.1.0"
 
 kotlin {
-    explicitApi()
+    explicitApi = ExplicitApiMode.Strict
+
+    jvmToolchain(21)
 
     jvm()
 
     androidTarget {
         publishLibraryVariants("release")
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_1_8)
+            jvmTarget = JvmTarget.JVM_17
         }
     }
 
@@ -33,23 +37,34 @@ kotlin {
 
     linuxX64()
 
-    wasmJs()
+    wasmJs {
+        browser()
+        nodejs()
+        d8()
+    }
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
-                implementation(libs.serialization.core)
-                implementation(libs.serialization.json)
-                implementation(libs.coroutines.core)
-                implementation(libs.ktor.client.core)
-                implementation(libs.ktor.client.auth)
+                // Serialization
+                api(libs.serialization.core)
+                api(libs.serialization.json)
+
+                // Coroutines
+                api(libs.coroutines.core)
+
+                // Ktor
+                api(libs.ktor.client.core)
+                api(libs.ktor.client.auth)
+                api(libs.ktor.client.content.negotiation)
+                api(libs.ktor.client.serialization.json)
                 implementation(libs.ktor.client.logging)
-                implementation(libs.ktor.client.content.negotiation)
-                implementation(libs.ktor.client.serialization.json)
+
+                // Kotlinx
                 implementation(libs.kotlinx.datetime)
             }
         }
-        val commonTest by getting {
+        commonTest {
             dependencies {
                 implementation(libs.kotlin.test)
             }
@@ -62,6 +77,22 @@ android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+}
+
+dokka {
+    moduleName.set("YandexML-Kotlin-SDK")
+
+    dokkaSourceSets.configureEach {
+        sourceLink {
+            localDirectory.set(file("src/main/kotlin"))
+            remoteUrl("https://github.com/Oremif/YandexML-kotlin-sdk")
+            remoteLineSuffix.set("#L")
+            documentedVisibilities(VisibilityModifier.Public)
+        }
+    }
+    dokkaPublications.html {
+        outputDirectory.set(rootProject.layout.projectDirectory.dir("docs/dokka"))
     }
 }
 
